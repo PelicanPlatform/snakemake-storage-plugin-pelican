@@ -1,0 +1,28 @@
+[project]
+name = "snakemake-storage-plugin-pelican"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = ["snakemake-interface-common (>=1.21.0,<2.0.0)", "snakemake-interface-storage-plugins (>=4.2.1,<5.0.0)"]
+repository = "https://github.com/your/plugin"
+documentation = "https://snakemake.github.io/snakemake-plugin-catalog/plugins/storage/pelican.html"
+[[project.authors]]
+name = "Justin Hiemstra"
+email = "jhiemstra@wisc.edu"
+
+[build-system]
+requires = [ "poetry-core>=2.0.0,<3.0.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+[[tool.poetry.packages]]
+include = "snakemake_storage_plugin_pelican"
+from = "src"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.5"
+coverage = "^7.10.1"
+pytest = "^8.4.1"
+
