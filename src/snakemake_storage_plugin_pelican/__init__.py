@@ -1,7 +1,7 @@
 import logging
 import os
 from pathlib import PurePosixPath
-from pelicanfs.core import PelicanFileSystem
+from pelicanfs import PelicanFileSystem
 from urllib.parse import urlparse
 
 from dataclasses import dataclass, field
@@ -228,11 +228,10 @@ class StorageProvider(StorageProviderBase):
     def _set_debugging(self):
         # Set log levels for PelicanFS and the storage plugin if `debug` is enabled
         # Accept any truthy value: "true", "True", "1", "yes", etc.
-        debug_enabled = self.settings.debug and self.settings.debug.lower() in (
-            "true",
-            "1",
-            "yes",
-            "on",
+        debug_enabled = (
+            self.settings.debug
+            and isinstance(self.settings.debug, str)
+            and self.settings.debug.lower() in ("true", "1", "yes", "on")
         )
 
         if debug_enabled:
